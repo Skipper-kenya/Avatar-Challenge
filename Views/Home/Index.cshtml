@@ -1,0 +1,31 @@
+﻿@model List<Avatar_Challenge.Models.AvatarModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <p class="display-6">Avatar Challenge</p>
+</div>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <form asp-action="CreateChallenge" method="get">
+        <button class="btn btn-primary me-md-2" type="submit">Add a Challenge</button>
+    </form>
+</div>
+
+<div class="row">
+    @foreach (var avatar in Model)
+    {
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="@Url.Content("~/uploads/" + avatar?.AvatarName)" class="card-img-top" style="border-radius:50%;width:200px;height:200px;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@avatar?.Email</h5>
+                    <p class="card-text">@avatar?.FullNames</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
