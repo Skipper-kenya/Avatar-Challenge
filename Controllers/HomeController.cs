@@ -91,6 +91,30 @@ namespace Avatar_Challenge.Controllers
         }
 
 
+
+        /*
+         * Delete and Edit route
+         */
+
+        public async Task<IActionResult> DeleteAvatar(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var avatar = await _context.Avatars.FirstOrDefaultAsync(a => a.Id == id);
+
+            if (avatar != null)
+            {
+                _context.Avatars.Remove(avatar);
+                await _context.SaveChangesAsync();
+            }
+
+        
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
