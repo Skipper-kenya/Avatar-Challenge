@@ -17,11 +17,18 @@
     {
         <div class="col">
             <div class="card" style="width: 18rem;">
-                <img src="@Url.Content("~/uploads/" + avatar?.AvatarName)" class="card-img-top" style="border-radius:50%;width:200px;height:200px;" alt="...">
+                <div class="d-flex justify-content-center">
+                    <img src="@Url.Content("~/uploads/" + avatar?.AvatarName)" class="card-img-top" style="border-radius:20%;width:250px;height:250px;" alt="...">
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">@avatar?.Email</h5>
-                    <p class="card-text">@avatar?.FullNames</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <p class="lead">@avatar?.Email</p>
+                    <p class="lead">@avatar?.FullNames</p>
+
+                    <div class="d-flex justify-content-end">
+                        <a href="@Url.Action("DeleteAvatar","Home", new {id = avatar?.Id})" role="button" class="btn btn-outline-primary" style="margin-right:2px;"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="@Url.Action("DeleteAvatar","Home", new {id = avatar?.Id})" role="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i></a>
+                    </div>
+
                 </div>
             </div>
         </div>
